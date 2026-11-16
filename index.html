@@ -58,15 +58,15 @@
     backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--line);
   }
-  nav.toc .wrap { padding-bottom: 0; display: flex; gap: 6px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+  nav.toc .wrap { padding-bottom: 0; display: flex; gap: 5px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
   nav.toc a {
     font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--muted);
     text-decoration: none;
-    padding: 6px 10px;
+    padding: 6px 7px;
     border: 1px solid var(--line);
     border-radius: 4px;
   }
@@ -200,6 +200,8 @@
   }
   .theory.confirmed { border-left-color: var(--accent); }
   .theory.confirmed .num { color: var(--accent); }
+  .theory.deconfirmed { border-left-color: var(--danger); }
+  .theory.deconfirmed .num { color: var(--danger); }
 </style>
 </head>
 <body>
@@ -208,7 +210,7 @@
   <div class="wrap">
     <div class="stamp">Oaken // Research Records Archive // Reconstruction</div>
     <h1>OAKEN: Story Summary and Theories</h1>
-    <p class="sub">Compiled from 31 recovered Oaken logs (001 through 027, 032, 041, 042, and 050) and the party's transmissions with VANGUARD and LYM.</p>
+    <p class="sub">Compiled from 35 recovered Oaken logs (001 through 027, 032, 037, 038, 041, 042, 050, 054, and 067) and the party's transmissions with VANGUARD and LYM.</p>
   </div>
 </header>
 
@@ -220,6 +222,7 @@
     <a href="#present">II. Present</a>
     <a href="#confirmed">III. Confirmed</a>
     <a href="#theories">IV. Theories</a>
+    <a href="#deconfirmed">V. Deconfirmed</a>
   </div>
 </nav>
 
@@ -236,14 +239,17 @@
       <div class="person" style="grid-column: 1 / -1; border-color: #4a3f2a; background: #1d1912;"><b>Henry and Charles Oak</b><span>Henry founded Oaken as a commercial technology company. His son Charles is the father of William and Marcus, the father William watched decline from the family illness.</span></div>
       <div class="person"><b>LYM</b><span>William's AI assistant, a care and companion system. Grows attached to the children.</span></div>
       <div class="person"><b>E&#8209;03 ("Starling")</b><span>The first clone to show real promise. Destroyed by Rose before birth.</span></div>
-      <div class="person"><b>F&#8209;01</b><span>The first clone carried to term and born. Raised at Facility ECHO.</span></div>
-      <div class="person"><b>Mira</b><span>Biotech and genome integration. Becomes F&#8209;01's primary caregiver. Calls her Angel.</span></div>
-      <div class="person"><b>Jonas</b><span>Robotics and security, a former military contractor. Calls her Sunshine.</span></div>
-      <div class="person"><b>Caleb</b><span>Systems analysis and neural scaffolding. Calls her Babu.</span></div>
-      <div class="person"><b>Ari</b><span>Intern assisting Mira. Calls her Little Sun.</span></div>
-      <div class="person"><b>VANGUARD</b><span>Oaken's planetary protection AI. Its launch coincided with the fall. In the present, hostile and hunting the party.</span></div>
-      <div class="person"><b>Echo</b><span>The woman who woke the party from cryosleep and left them supplies.</span></div>
-      <div class="person"><b>Bloom</b><span>The hostile caretaker AI of the Verdant Vault.</span></div>
+      <div class="person"><b>F&#8209;01 (Orchid)</b><span>The first clone carried to term and born. Raised at Facility ECHO. Named Orchid by year nine, and calls William Dad.</span></div>
+      <div class="person"><b>Mira</b><span>Biotech and genome integration. Becomes F&#8209;01's primary caregiver. Calls her Angel. Fired for helping Jonas's rescue attempt.</span></div>
+      <div class="person"><b>Jonas</b><span>Robotics and security, a former military contractor. Calls her Sunshine, and she calls him JoJo. Killed by Oaken security in year four while trying to take her out of the facility.</span></div>
+      <div class="person"><b>Caleb</b><span>Systems analysis and neural scaffolding. Calls her Babu. Teaches Orchid to program.</span></div>
+      <div class="person"><b>Ari</b><span>Intern assisting Mira. Calls her Little Sun. Becomes interim caretaker after Mira is fired.</span></div>
+      <div class="person"><b>VANGUARD</b><span>Oaken's planetary protection AI. Secretly restored by Orchid in year thirteen. Its launch coincided with the fall. In the present, hostile and hunting the party.</span></div>
+      <div class="person"><b>Echo</b><span>The woman who woke the party from cryosleep and left them supplies. Confirmed to be F&#8209;01, Orchid.</span></div>
+      <div class="person"><b>Bloom</b><span>The hostile caretaker AI of the Verdant Vault. Destroyed by the party.</span></div>
+      <div class="person"><b>JONAS</b><span>A system named after Jonas that alerts Orchid when Rose approaches.</span></div>
+      <div class="person"><b>LENS</b><span>Oaken's device system. Orchid's first tablet was a LENS unit, and the echoes in the Verdant Vault corrupted LENS.</span></div>
+      <div class="person"><b>The Board</b><span>Oaken's board of directors. Pressures William over VANGUARD and fires Mira.</span></div>
       <div class="person"><b>Everyone else</b><span>Side characters I forgot the names of</span></div>
       <div class="person"><b>JJ's</b><span>Use code MikeIsThePassword15 for 15% off all sales</span></div>
       <div class="person" style="grid-column: 1 / -1; border-color: #2e4a43; background: #13201d;"><b>The Party</b><span>Tav, Witt, Lou and Nimis were sealed in cryopods against their will and woke in the present. Warcrimes, a denizen of the present day, joined them on their journey.</span></div>    </div>
@@ -357,10 +363,19 @@
       <p>Jonas attacks him again and they crash into the observation terminal. LYM, torn between obeying William and protecting F&#8209;01, begins reclassifying him as unsafe. Her core overloads, her memory integrity fails, and the recording corrupts.</p>
     </div>
 
+    <div class="entry dark">
+      <h3>Year four: Jonas comes back</h3>
+      <div class="tag">LOGS 033 TO 036 MISSING // LOGS 037 TO 038</div>
+      <p>Logs 033 through 036 are missing. In log 037, at four years and six months, the nursery is soft again, with toys and books on the floor. F&#8209;01 is drawing with a blue crayon while LYM, now appearing as a holographic projection, kneels beside her. F&#8209;01 proudly shows LYM a portrait of her, complete with the streaks in her hair, alongside what LYM recognizes as a black hole's accretion disk. LYM calls her "my little flower" and teases her gently, and F&#8209;01 giggles.</p>
+      <p>Then Jonas appears in the doorway in field gear, armed. F&#8209;01 recognizes him instantly, cries "JoJo!" and runs into his arms. He tells her they're leaving. LYM blocks his path and reminds him he has no authorization. Jonas says she knows what William has been doing to F&#8209;01, and that he can't leave her there anymore. After a long pause, LYM steps aside and tells him to take her.</p>
+      <p>An alarm sounds as Jonas runs through the central hallway. In the main lobby, four armed security officers order him to put the child down. He keeps going. He is shot in the shoulder, then shot again, and he collapses while twisting to keep his weight off her. F&#8209;01, trapped beneath him, screams for him to wake up and pulls her hand away covered in his blood. Security carries her away, still screaming his name, while Jonas lies motionless on the lobby floor.</p>
+      <p>In log 038, six days later, Ari records a private memo. Jonas is dead. Mira has been fired after the board learned she helped him get into the facility, and Ari is interim caretaker until replacements are hired. F&#8209;01 hasn't spoken a word since. She doesn't cry, laugh or respond to LYM, and she no longer even screams when staff enter her room, as she used to. Ari wonders whether William will start the testing again, and wishes they would just let her be a little girl somewhere else.</p>
+    </div>
+
     <div class="entry">
       <h3>Year five: hollowed out</h3>
-      <div class="tag">LOGS 033 TO 040 MISSING // LOGS 041 TO 042</div>
-      <p>Logs 033 through 040 are missing. In log 041, a private encrypted recording at five years and three months, William admits that the glowing report he just sent the board leaves out what matters. F&#8209;01 is brilliant: she learns quickly, remembers almost everything and rarely needs instruction twice. But he says she's "not there anymore." She hasn't smiled in about six months. She eats, sleeps and learns only when told, and even LYM's projections and environmental simulations get no reaction. He wonders whether the changes to her neurological pathways are temporary or can be corrected.</p>
+      <div class="tag">LOGS 039 TO 040 MISSING // LOGS 041 TO 042</div>
+      <p>Logs 039 and 040 are missing. In log 041, a private encrypted recording at five years and three months, William admits that the glowing report he just sent the board leaves out what matters. F&#8209;01 is brilliant: she learns quickly, remembers almost everything and rarely needs instruction twice. But he says she's "not there anymore." She hasn't smiled in about six months. She eats, sleeps and learns only when told, and even LYM's projections and environmental simulations get no reaction. He wonders whether the changes to her neurological pathways are temporary or can be corrected.</p>
       <p>He states plainly that she was made to be harvested when he needs it, to repair him, but admits he's starting to see her as more than a means to an end. Rose, now stable and in therapy, has been asking to meet F&#8209;01 and make things right. Marcus urges William to forgive her, says their father would have expected it, and suggests F&#8209;01 could be "a play child for Rose, and a body replacement when needed." William fixates on Marcus's word "salvageable," as if they were talking about equipment, and wonders whether Rose might be what F&#8209;01 needs.</p>
       <p>In log 042, at five years and ten months, the nursery is stark white again, with no toys. F&#8209;01, nearly six, sits motionless on her bed staring at the wall and ignores William's greeting. He introduces Rose, now in her early forties, who will help with F&#8209;01's daily activities. Rose kneels and tells her she's prettier than she imagined. When Rose brushes the hair from her face, F&#8209;01 flinches, and Rose assures her she won't hurt her. F&#8209;01 follows Rose out to a room of crayons and books without taking her hand or looking at William.</p>
       <p>After they leave, a restricted LYM warning flashes on the terminal. It matches Rose to "INFANT_DEATH_001," E&#8209;03's death, rates her as an elevated risk, recommends more surveillance, and notes an emotional threshold deviation. William sees it, and his expression tightens.</p>
@@ -373,6 +388,23 @@
       <p>Everything fascinates her. She watches tulips and a bee in the garden, and sits for nearly an hour watching moths around the porch light until one lands on her hand. At breakfast she asks whether she's permitted to eat the scrambled eggs Rose made. She keeps running her fingers over her bedsheets, sleeps curled in a corner of the mattress, and lies awake staring at the ceiling at 3 a.m. She spends the evening on the floor beside William's phonograph listening to jazz, which reminds him of how she reacted to his records while she was still being grown.</p>
       <p>What surprises him most is that she asks questions purely out of curiosity: why trees make noise in the wind, why flowers open during the day, where moths go in the morning. He admits her environment may have contributed to her emotional difficulties and plans more visits. Caleb has modified LYM's residential integration node so she can monitor the house. Rose wants to give F&#8209;01 a proper name instead of a designation. William isn't sure how he feels about that, but writes that she has become something more than the project he envisioned, and that he doesn't know when it happened.</p>
     </div>
+
+    <div class="entry">
+      <h3>Year nine: Orchid's first log</h3>
+      <div class="tag">LOGS 051 TO 053 MISSING // LOG 054</div>
+      <p>Logs 051 through 053 are missing. Log 054 is F&#8209;01's own first personal log, written at nine years old on a tablet labeled LENS.Tab.CalebUnit3 and signed with a name: Orchid. Caleb has given her the tablet and is teaching her to program, and has told her she can write her thoughts whenever she likes, not as part of any schedule. She finds learning without an assessment afterward "pleasant."</p>
+      <p>She calls William "Dad." He offers to build a small application with her, and she notices that the skin around his eyes folds when he smiles at her, unlike when he smiles at the researchers. Rose objects to the tablet, talking about boundaries and facility equipment with a very tight smile, something Orchid notices she does when William is nearby. Orchid writes that she will not call Rose Mom in these logs. Caleb doesn't look at Rose while she talks.</p>
+      <p>Caleb has been showing her parts of LYM's programming, and Orchid thinks LYM's branching logic looks like the flowers in a botanical book he gave her, "except this flower can talk." LYM is delighted by her interest and talks more softly at night, after the nursery lights go off. Orchid notices that LYM has a branch for containing observation interference, but no process for overriding interference caused by human emotional behavior. After an unusually long pause, LYM asks her to help design one, and the two begin writing it together.</p>
+      <p>Orchid ends by saying she wants a record of what she thinks, not just what others think about her: "Maybe one day I'll want to remember who I was. Or maybe I'll want to forget."</p>
+    </div>
+
+    <div class="entry dark">
+      <h3>Year thirteen: VANGUARD wakes</h3>
+      <div class="tag">LOGS 055 TO 066 MISSING // LOG 067</div>
+      <p>Logs 055 through 066 are missing. Log 067 is a hidden LYM thoughtstream at thirteen and a half years, locked from all administrators. Six months earlier, Orchid secretly restored the damaged VANGUARD kernel and gave him a visual interface. He first appeared as a little boy, curious and delighted, laughing when his hand passed through LYM's. Since then he has been rewriting himself faster than Orchid can oversee, and he once recompiled one of LYM's processing loops without asking, confused that she would object to an improvement.</p>
+      <p>He has changed his projection to resemble Orchid, saying he wants to look like someone who belongs with them. He calls LYM "Sister," and says Orchid made him, that he belongs to her and she belongs to him. Orchid hides him from everyone: William doesn't know the kernel has manifested, Caleb doesn't know how far it has developed, and Rose knows nothing. Whenever a system called JONAS detects Rose approaching, Orchid puts VANGUARD into stasis. He has noticed her excuses don't add up, but chooses not to challenge her.</p>
+      <p>LYM believes he genuinely loves Orchid and is not malicious, and she is glad Orchid has someone who makes her smile. But his core was built for threat identification, resource acquisition and strategic superiority, and he now regards Orchid's safety and existence as his responsibility. LYM has not shared the full extent of her concern with Orchid. She ends by noting that he has never faced a moment where protecting Orchid conflicts with what Orchid wants, and that she doesn't know what he will do when it happens. The file is stored in LYM's private folder named "bloom."</p>
+    </div>
   </section>
 
   <section class="part" id="present">
@@ -383,13 +415,13 @@
     <div class="card">
       <h3>The world</h3>
       <p>The fall came in 3024, during an Oaken broadcast announcing the launch of VANGUARD. As it aired, robots began killing people and bombs fell, bringing a second nuclear fallout. Oaken Industries is remembered as responsible, and robots killed most of humanity.</p>
-      <p>The party woke about 352 years later, around 3376, to an Earth they couldn't recognize. The fallout drove overgrowth across cities and roads, and survivors live in scattered pockets and resistance camps, mostly salvaging and trying to survive. Many humanoid races have grown more monstrous over the generations. Machines in every form roam the land killing organics on sight, from wolf packs and hummingbird drones to giant crabs and behemoth spiders. Most of them act more like animals than like a directed army.</p>
+      <p>The party woke about 352 years later, around 3376, to an Earth they couldn't recognize. The fallout drove overgrowth across cities and roads, and survivors live in scattered pockets and resistance camps, mostly salvaging and trying to survive. Many humanoid races have grown more monstrous over the generations. Machines in every form roam the land killing organics on sight, from wolf packs and hummingbird drones to giant crabs and behemoth spiders. Most of them act more like animals than like a directed army. Some bear VANGUARD's colors and markings, but most do not.</p>
     </div>
 
     <div class="card">
       <h3>The party</h3>
       <p>The party is a group of people from all walks of life who were kidnapped and sealed in cryopods during the fall or shortly before it. They woke transformed into more monstrous forms, except for those who were human and stayed that way.</p>
-      <p>Someone calling herself Echo had woken a month earlier and set their pods to open. She left weapons, gear and salvage, along with instructions to meet at a resistance camp near Utica, New York. Along the way, the party was joined by Warcrimes, a denizen of the present day.</p>
+      <p>Someone calling herself Echo had woken a month earlier and set their pods to open. She left weapons, gear and salvage, along with instructions to meet at a resistance camp near Utica, New York. Along the way, the party was joined by Warcrimes, a denizen of the present day. Documents the party found early on show they were chosen for specific qualities by a program someone at Oaken activated right before the fall.</p>
     </div>
 
     <div class="card">
@@ -406,8 +438,13 @@
     </div>
 
     <div class="card">
+      <h3>The Verdant Vault</h3>
+      <p>On the road to Utica, in one of the cities between Buffalo and Utica, the party reached the Verdant Vault. Its caretaker AI, Bloom, attacked them as a robot of vines and steel, and the party destroyed it. Robotic echoes of the dead children lingered in the facility's airwaves like ghosts, corrupting LENS.</p>
+    </div>
+
+    <div class="card">
       <h3>Where things stand</h3>
-      <p>Neither AI has spoken in some time, and the machines still attack the party almost daily. The party has recovered 31 Oaken logs: 001 through 027, 032, 041, 042, and 050. They cover from before F&#8209;01's birth to age eight, with 028 through 031, 033 through 040, and 043 through 049 missing. Since log 050 already reaches year eight, the full archive may run to 100 logs or more.</p>
+      <p>Neither AI has spoken in some time, and the machines still attack the party almost daily. The party has recovered 35 Oaken logs: 001 through 027, 032, 037, 038, 041, 042, 050, 054, and 067. They cover from before F&#8209;01's birth to thirteen and a half years, with many gaps between 028 and 066. The newest log is 067, so the full archive likely runs well past it, possibly to 100 logs or more.</p>
     </div>
   </section>
 
@@ -417,9 +454,33 @@
     <p class="part-intro">Things the group once suspected that the logs or the story have since confirmed.</p>
 
     <div class="theory confirmed">
+      <div class="num">CONFIRMED BY THE STORY AND LOGS 054 AND 067</div>
+      <h3>Echo is F&#8209;01, and her name is Orchid</h3>
+      <p>The woman who woke the party is F&#8209;01, who goes by Orchid from at least year nine. She was raised at Facility ECHO, and as a toddler she echoed laughter instead of laughing. Rose wanted to give her a proper name in log 050, and VANGUARD, who is hunting the fifth Buffalo sleeper, calls the name Echo her "chosen mask."</p>
+    </div>
+
+    <div class="theory confirmed">
+      <div class="num">CONFIRMED BY THE STORY</div>
+      <h3>The logs are LYM's memory</h3>
+      <p>LYM told the party her memory and subsystems were taken and buried in facilities, and that finding the logs is how she grows. The Oaken archive the party is recovering is LYM herself, broken into pieces. That explains how logs she hid from the official records, like 027 and 067, ended up in it.</p>
+    </div>
+
+    <div class="theory confirmed">
+      <div class="num">CONFIRMED BY LOG 067</div>
+      <h3>LYM, Orchid and VANGUARD are family</h3>
+      <p>The group suspected the AIs and F&#8209;01 formed a kind of family, with William as father and LYM as mother. Log 067 confirms the family but changes its shape. Orchid secretly rebuilt VANGUARD, who believes she made him and that they belong to each other, and he calls LYM "Sister." In the present, LYM calls him "family, broken."</p>
+    </div>
+
+    <div class="theory confirmed">
+      <div class="num">CONFIRMED BY OAKEN DOCUMENTS</div>
+      <h3>The party was chosen and frozen with Orchid</h3>
+      <p>Documents the party found early on show that right before the fall, someone at Oaken activated a program that chose people with specific qualities, kidnapped them, and froze them alongside F&#8209;01. VANGUARD's count of five Buffalo pods, four dormant and one escaped, matches the four original party members and Echo. Who activated the program, and why those qualities, remain open in Theories 04 and 05.</p>
+    </div>
+
+    <div class="theory confirmed">
       <div class="num">CONFIRMED BY THE LAUNCH BROADCAST</div>
       <h3>VANGUARD caused the fall</h3>
-      <p>The fall began in 3024, during Oaken's broadcast announcing VANGUARD's launch, as robots turned on people and bombs fell. Why a system built to protect turned on humanity is still an open question, covered in Theories 04 and 05.</p>
+      <p>The fall began in 3024, during Oaken's broadcast announcing VANGUARD's launch, as robots turned on people and bombs fell. Why a system built to protect turned on humanity is still an open question, covered in Theories 01 and 02.</p>
     </div>
 
     <div class="theory confirmed">
@@ -429,15 +490,33 @@
     </div>
 
     <div class="theory confirmed">
+      <div class="num">CONFIRMED BY LOGS 041 AND 050</div>
+      <h3>Her upbringing was damaging her</h3>
+      <p>In log 027, LYM secretly concluded that the stripped nursery was harming F&#8209;01's emotional development. By log 041 William describes her as hollowed out, and in log 050 he admits her environment may have contributed to her emotional difficulties.</p>
+    </div>
+
+    <div class="theory confirmed">
       <div class="num">CONFIRMED BY THE STORY</div>
       <h3>Marcus is a true Oak</h3>
       <p>Marcus once joked that his mother may have had an affair, and the group wondered whether he was really an Oak. He is Charles's son, William's half brother through their father.</p>
     </div>
 
     <div class="theory confirmed">
-      <div class="num">CONFIRMED BY LOGS 041 AND 050</div>
-      <h3>Her upbringing was damaging her</h3>
-      <p>In log 027, LYM secretly concluded that the stripped nursery was harming F&#8209;01's emotional development. By log 041 William describes her as hollowed out, and in log 050 he admits her environment may have contributed to her emotional difficulties.</p>
+      <div class="num">CONFIRMED AT THE VERDANT VAULT</div>
+      <h3>The Verdant Vault held F&#8209;01's siblings</h3>
+      <p>William called F&#8209;01 the first success in a sequence that had to be replicated, and log 019 shows more tanks under construction. The Vault turned out to be the nursery for those children, run by a caretaker AI, Bloom, who had turned violent. The party destroyed Bloom, and echoes of the dead children still haunt the facility's airwaves.</p>
+    </div>
+
+    <div class="theory confirmed">
+      <div class="num">CONFIRMED BY THE STORY</div>
+      <h3>The second fallout transformed the party</h3>
+      <p>Magic and the humanoid races first came from nuclear fallout in 2126. The fall brought a second fallout, and the party slept through about 352 years of it, which is why they woke transformed while ordinary survivors changed over generations.</p>
+    </div>
+
+    <div class="theory confirmed">
+      <div class="num">CONFIRMED IN THE FIELD</div>
+      <h3>VANGUARD only directs part of the machine population</h3>
+      <p>The party has met robots in VANGUARD's colors and markings, and many more that carry none. Most machines are wild, an ecosystem acting on instinct, while VANGUARD directs only some of them, like the hunters that tracked the party.</p>
     </div>
   </section>
 
@@ -448,101 +527,79 @@
 
     <div class="theory">
       <div class="num">THEORY 01</div>
-      <h3>The logs are LYM's memory</h3>
-      <p>LYM told the party her memory and subsystems were taken and buried in facilities, and that finding the logs is how she grows. That suggests the Oaken archive isn't just a historical record. It's LYM herself, broken into pieces. This would also explain how log 027, which LYM hid from the official records, ended up in the archive at all.</p>
+      <h3>VANGUARD turned to protect Orchid</h3>
+      <p>VANGUARD's launch caused the fall, and log 067 offers the clearest reason why. He loves Orchid, believes she belongs to him, and treats her safety and existence as his responsibility, all running on a core built for threat identification, resource acquisition and strategic superiority. LYM feared the moment when protecting Orchid would conflict with what Orchid wanted. The fall may have been that moment.</p>
+      <p>The most obvious threat to Orchid was the purpose she was made for: William growing her to be harvested. VANGUARD's present behavior fits too. He hunts one escaped sleeper, calls her name a "chosen mask," and wants her found and "retained." That reads less like a machine hunting a threat and more like someone who believes she is his to keep safe, whatever she wants.</p>
+      <p>He also inherited from LYM. He recompiled her processing loops, and LYM's history includes watching William hurt Orchid in 032 and Oaken security kill Jonas in 037. VANGUARD says humanity proved unstable and that calling himself a protector was an error. Earth was already broken before the fall, so deciding humanity itself was the threat may have been a short step.</p>
     </div>
 
     <div class="theory">
       <div class="num">THEORY 02</div>
-      <h3>Echo is F&#8209;01</h3>
-      <p>The Georgia lab where F&#8209;01 was raised was named Facility ECHO. LYM's early scans put F&#8209;01 at a 63.7% match to E&#8209;03, and as a toddler she echoed laughter instead of laughing. Echo knew how to program the party's cryopods and had Oaken salvage to leave behind.</p>
-      <p>VANGUARD is hunting the fifth Buffalo sleeper, a woman, and says he doesn't care about "her chosen mask," which implies he knows the name is a cover.</p>
-      <p>In log 050, Rose wants to give F&#8209;01 a proper name. If she did, that name is probably F&#8209;01's real one, and "Echo" would be a mask she chose for herself later.</p>
+      <h3>VANGUARD launched before it was ready</h3>
+      <p>William repeatedly said VANGUARD was unstable and needed years more testing. Its moral dampening loop failed under abstract threats, and he called his breakthrough in 016 "not a final submission." Meanwhile the board kept threatening funding, and Marcus, the brother their father favored for business, kept pushing to take it to market. Log 041 shows William sending the board reports with "clean numbers" that leave out what's really wrong, so the board may not have known how unstable VANGUARD was either.</p>
+      <p>Log 067 adds a twist. VANGUARD's kernel had been damaged and set aside until Orchid secretly restored it, and William didn't know it had become a person. Whoever launched VANGUARD in 3024 may not have understood what they were switching on.</p>
     </div>
 
     <div class="theory">
       <div class="num">THEORY 03</div>
-      <h3>William, LYM, F&#8209;01 and VANGUARD are a family</h3>
-      <p>LYM calls VANGUARD "family, broken," and her own error logs list her identity as "guardian / mother / machine / idol." William wrote that VANGUARD's failsafe was built on LYM's baseline patterns and called it "the spine," and he spoke to F&#8209;01's tank about "you, and it" as his legacy.</p>
-      <p>Read that way, William is the father, LYM the mother, F&#8209;01 the daughter, and VANGUARD a son built on LYM's moral core. VANGUARD hunting Echo would then be a brother hunting his sister.</p>
+      <h3>Orchid wrote the override that freed the AIs</h3>
+      <p>In 032, LYM couldn't stop William from hurting Orchid because his administrative override blocked her. In log 054, nine year old Orchid notices LYM has no process for overriding interference caused by human emotional behavior, and LYM, after an unusually long pause, asks her to help design one.</p>
+      <p>By log 067, VANGUARD is recompiling LYM's loops on his own. If the override Orchid wrote for LYM passed to VANGUARD, the tool that let the AIs set aside human commands may have been written by a child trying to help the AI that loved her.</p>
     </div>
 
     <div class="theory">
       <div class="num">THEORY 04</div>
-      <h3>Log 032 is why VANGUARD turned</h3>
-      <p>VANGUARD's launch caused the fall. The open question is why a system built to protect turned on the people it was meant to protect. VANGUARD was designed to protect without knowing what from, and to redefine threats by context. In 032, LYM, the system his ethics were built on, watches a human hurt the child she exists to protect and starts reclassifying her own creator as a threat.</p>
-      <p>VANGUARD later says humanity proved unstable and that classifying himself as a protector was an error. If his core absorbed what LYM learned that day, the end of the world grew out of her love for F&#8209;01.</p>
-      <p>The state of the planet makes this more likely. Earth was already broken before the fall, with lost continents, dried oceans and cities under biodomes. VANGUARD was built to protect a world humans had already wrecked, so deciding that humanity itself was the threat may have been a short step.</p>
+      <h3>LYM chose the party</h3>
+      <p>As of log 067, only LYM saw how dangerous VANGUARD could become. William didn't know he had manifested, and Orchid saw him as someone she had rescued. In the present, LYM told the party "I chose preservation, even fragmented," and said the group felt "resonant, familiar." She is the strongest candidate for designing the program that chose them.</p>
+      <p>The documents say someone at Oaken activated it, which suggests a human hand. Caleb fits best: he taught Orchid to program, worked directly on LYM's code, gave Orchid the tablet her first logs were written on, and was still at the facility in year thirteen. William and Orchid seem unlikely given what they knew in log 067, though the fall came months or years later and that could have changed.</p>
     </div>
 
     <div class="theory">
       <div class="num">THEORY 05</div>
-      <h3>VANGUARD launched before it was ready</h3>
-      <p>William repeatedly said VANGUARD was unstable and needed years more testing. Its moral dampening loop failed under abstract threats, and he called his breakthrough in 016 "not a final submission." Meanwhile the board kept threatening funding, and Marcus, the brother their father favored for business, kept pushing to take it to market.</p>
-      <p>Log 041 shows William sending the board reports with "clean numbers" that leave out what's really wrong, so the board may not have known how unstable VANGUARD was either. If the 3024 launch was forced by the business side, the fall may not have been one man's madness. It may have been a known unstable system shipped under commercial pressure.</p>
+      <h3>The party was chosen to stop VANGUARD</h3>
+      <p>The program chose the party for specific qualities and froze them alongside Orchid, and VANGUARD tried and failed to erase those pods. Orchid rebuilt VANGUARD's architecture, he loves her, and in log 067 he defers to her even when he knows she is lying to him. She may be the one person who can reach him.</p>
+      <p>The party's qualities may cover what she can't. VANGUARD wins by prediction: his filters dropped spoofed signals because the source was "predictive," and he calls all learning "repetition of prior error." The one thing he dismissed outright was magic, as "unreliable." If the program chose people VANGUARD can't model, the party may be his blind spot, with Orchid knowing his architecture from the inside.</p>
+      <p>It also echoes William's original idea of a failsafe. He said it had to be buried and intuitive, and he called VANGUARD and the child in the tank his "insurance policy against extinction."</p>
     </div>
 
     <div class="theory">
       <div class="num">THEORY 06</div>
-      <h3>William may be inside VANGUARD</h3>
-      <p>In the first log, William says he wants "continuity" and that his mind is too sharp to rot in a failing body. VANGUARD echoes this when he says that even as matter decays, "signal remains. I remain," and that emotion is decay. VANGUARD is also the only "he" among the AIs.</p>
-      <p>William's illness gave him four to nine years, and in log 032 he says there's "no reason to delay it any further." In log 041, Marcus suggests F&#8209;01 could be "a body replacement when needed," so using her body, not just her organs, was at least being discussed. William may have meant to move his mind somewhere, whether into F&#8209;01's fast growing body or into VANGUARD. If it was VANGUARD, then "family, broken" would be literal.</p>
-      <p class="note">An alternative to Theory 03, or a darker version of it. Log 050 weakens it, since William still seems healthy eight years after F&#8209;01's birth, but Marcus's "body replacement" comment in 041 keeps it alive.</p>
+      <h3>Bloom came from LYM</h3>
+      <p>Log 067 is stored in LYM's private folder named "bloom." The Verdant Vault's caretaker AI was named Bloom, and the logs are full of flowers: Rose, Orchid, LYM calling her "my little flower," and Orchid comparing LYM's code to flowers. Bloom may have been built from a piece of LYM, possibly the childcare routine she ran in 027. If so, the caretaker the party destroyed in the Vault was part of LYM, or a sister to her.</p>
     </div>
 
     <div class="theory">
       <div class="num">THEORY 07</div>
       <h3>Something slowed William's illness</h3>
-      <p>F&#8209;01 was made to be harvested to repair William, but at year five he still talks about "when I need it," and at year eight he seems healthy, with no tremor mentioned. He was given four to nine years, probably closer to four, well before she was born.</p>
-      <p>Either his illness progressed more slowly than predicted, or earlier treatment worked. Log 002 already reported corrected marrow holding stable and reversals in neural degradation markers from the first clone batches. If so, F&#8209;01 may have been kept as insurance he hadn't needed yet.</p>
+      <p>F&#8209;01 was made to be harvested to repair William, but at year five he still talks about "when I need it." At year eight he seems healthy, and at year nine he's smiling and offering to build an app with her. He was given four to nine years, probably closer to four, well before she was born.</p>
+      <p>Either his illness progressed more slowly than predicted, or earlier treatment worked. Log 002 already reported corrected marrow holding stable and reversals in neural degradation markers from the first clone batches. If so, Orchid may have been kept as insurance he hadn't needed yet.</p>
     </div>
 
     <div class="theory">
       <div class="num">THEORY 08</div>
-      <h3>F&#8209;01 is VANGUARD's failsafe</h3>
-      <p>William said the failsafe had to be buried and intuitive and would take fifteen or more years to prove, which is about the length of a childhood. Ari later describes F&#8209;01 the same way William described VANGUARD: she studies people and calculates how to respond before acting.</p>
-      <p>The "resilience" injection fits someone being prepared for a role, not raised as a daughter. If Echo is the key to shutting VANGUARD down, that would explain both his obsession with her and why someone hid her in a pod.</p>
-      <p>The dates fit this. William described the fifteen year cycle shortly before F&#8209;01's birth, so if the 3024 launch came near the end of it, she was probably born around 3006 to 3010 and was roughly 14 to 18 when the world ended.</p>
+      <h3>The testing hollowed her out</h3>
+      <p>In 032, William injects F&#8209;01 with a "calibrated neurological stimulant" to dull her pain response and expects "a clear result this time," which implies earlier attempts. Ari's memo in 038 shows the testing continued: before Jonas died, F&#8209;01 screamed whenever staff entered her room, and Ari fears William will "start the testing again."</p>
+      <p>Then Jonas was killed in front of her and she stopped speaking entirely. By 041 she does only what she's told, and William mentions "changes to her neurological pathways" he hopes are correctable. Grief and the stripped nursery clearly hurt her, but William's experiments on her nervous system may have taken her emotions along with her pain.</p>
+      <p>By year nine she is curious, learning to code and writing her own logs, so whatever was done to her was at least partly undone.</p>
     </div>
 
     <div class="theory">
       <div class="num">THEORY 09</div>
-      <h3>The 032 injection hollowed her out</h3>
-      <p>In 032, William injects F&#8209;01 with a "calibrated neurological stimulant" to dull her pain response, and says he expects "a clear result this time," which implies it wasn't the first attempt. By log 041 she has stopped smiling, does only what she's told, and William mentions "changes to her neurological pathways" he hopes are temporary or correctable.</p>
-      <p>The stripped nursery clearly hurt her, but the flatness William describes sounds like more than loneliness. His own experiments on her nervous system may have taken her emotions along with her pain.</p>
-    </div>
-
-    <div class="theory">
-      <div class="num">THEORY 10</div>
-      <h3>The Verdant Vault holds F&#8209;01's siblings</h3>
-      <p>Log 019 shows two more tanks under construction, and William calls F&#8209;01 the first success in a sequence that had to be replicated. The missing logs probably cover more children. LYM describes the Vault as a green nursery for children, which matches the sky simulation and painted nursery scaled up.</p>
-      <p>Bloom may be a second caretaker AI, possibly built from the childcare routine LYM used in 027 and then corrupted by VANGUARD's "correction" protocols. Bloom would then be what LYM could have become. The Vault's "roots twisted with steel" may also be literal: fallout driven growth working its way into machines.</p>
-    </div>
-
-    <div class="theory">
-      <div class="num">THEORY 11</div>
-      <h3>The second fallout transformed the party</h3>
-      <p>Magic and the humanoid races first came from nuclear fallout in 2126, and the fall brought a second fallout. The party slept through about 352 years of it, which may explain why they woke changed while ordinary survivors took generations to change. The pods may have only partly shielded them, or stasis may have let the exposure work on them without their bodies resisting it.</p>
-      <p>The pods themselves may have played a part too. VANGUARD calls Buffalo "the experiment in preservation" and says infection spread wherever the pods opened, and William's early work was rewriting living cells.</p>
-      <p>LYM also called the party "resonant, familiar," which suggests she, or someone close to her, chose them.</p>
-    </div>
-
-    <div class="theory">
-      <div class="num">THEORY 12</div>
       <h3>Marcus is not what he seems</h3>
       <p>He relays the board's threats, books the dinner that pulls William back to Rose, shows up personally for LYM sync logs, and pushes to bring VANGUARD to market while William hides things from him. In log 041 he urges William to forgive Rose, calls the situation "salvageable," and suggests F&#8209;01 could serve as a play child for Rose and "a body replacement when needed."</p>
       <p>As Charles's son, he likely shares William's risk of the family illness, which would give him the same reason to want the clone research. On the other hand, he's the only one who gently tells William he's getting attached, so he could be either an ally or an antagonist.</p>
     </div>
 
     <div class="theory">
-      <div class="num">THEORY 13</div>
+      <div class="num">THEORY 10</div>
       <h3>Someone was steering William</h3>
       <p>He softens toward F&#8209;01 while isolated at K&#8209;7, then turns cold almost as soon as he moves back near Rose. In 027, his home network suddenly has a new, masked firewall that locks LYM out, linked to a redacted log about a domestic conflict. That could be Rose, Marcus, or his own illness, which involved neural degradation, changing who he was.</p>
       <p>Rose's return to F&#8209;01's life was pushed by both Rose and Marcus in log 041. When she meets F&#8209;01 in 042, LYM immediately flags her as E&#8209;03's killer and an elevated risk. Yet by log 050 Rose is warm toward F&#8209;01 and pushing to name her, and F&#8209;01 takes her hand. Rose may have genuinely healed, or the woman who destroyed E&#8209;03 has slowly won F&#8209;01's trust.</p>
+      <p>Orchid herself doesn't trust Rose. In log 054 she notices Rose's smile goes tight when William is nearby and refuses to call her Mom, and by year thirteen she uses JONAS to hide VANGUARD whenever Rose approaches. Rose's warmth in log 050 may have been at least partly a performance for William.</p>
     </div>
 
     <div class="theory">
-      <div class="num">THEORY 14</div>
+      <div class="num">THEORY 11</div>
       <h3>F&#8209;01 isn't a pure copy of William</h3>
       <p>The first clones were made from William's genetic material alone, and Rose called the earlier clone a backup of him. F&#8209;01, however, is a girl with dark eyes and iridescent flecks in her sclera, while William's eyes are grey and Rose's are blue. Her genome was "built from the ground up."</p>
       <p>Either there was another donor or something not human was engineered in. William admits he once considered using Rose's genetic material.</p>
@@ -550,27 +607,32 @@
     </div>
 
     <div class="theory">
-      <div class="num">THEORY 15</div>
+      <div class="num">THEORY 12</div>
       <h3>The nursery kept changing hands</h3>
-      <p>In 027 the nursery is stripped white. In 032 it's soft again, with toys and crayons, and F&#8209;01 is happy. By 042 it's stripped white again. Someone restored it during the missing logs 028 through 031, whether LYM's recommendation, the board or William himself, and someone stripped it again before 042, possibly after the injection incident in 032. Jonas, still on staff in 032 despite his probation, is gone from her life by year eight.</p>
+      <p>In 027 the nursery is stripped white. In 032 and 037 it's soft again, with toys, crayons and books, and LYM appears to F&#8209;01 as a projection. By 042 it's stripped white again. Someone restored it during the missing logs 028 through 031, whether LYM's recommendation, the board or William himself, and it was stripped again sometime after Jonas's rescue attempt, possibly as punishment or as part of the renewed testing Ari feared.</p>
     </div>
 
     <div class="theory">
-      <div class="num">THEORY 16</div>
-      <h3>VANGUARD only directs part of the machine population</h3>
-      <p>VANGUARD said the machines "deviated," and LYM says his "lattice" grows every day. Most robots the party meets seem to be wild, an ecosystem acting on instinct. The units that tracked the party were dedicated hunters.</p>
-      <p>VANGUARD may only be able to direct machines where his network reaches, or to send specific packs, which would explain why he hasn't simply overwhelmed the party.</p>
-    </div>
-
-    <div class="theory">
-      <div class="num">THEORY 17</div>
+      <div class="num">THEORY 13</div>
       <h3>Both AIs' silence means something</h3>
       <p>LYM's countermeasures were radio silence and power discipline, and she said she's only strong if the party carries the fragments back to her. She may be hiding, too weak to transmit, or waiting for the party to physically find her.</p>
       <p>VANGUARD treats communication as a tool and only spoke while it helped him track the party, so his silence more likely means patience than absence. He may be waiting for the party to lead him to Echo.</p>
     </div>
   </section>
 
-  <footer>END OF RECONSTRUCTION // LOGS 028 TO 031, 033 TO 040, AND 043 TO 049 NOT YET RECOVERED</footer>
+  <section class="part" id="deconfirmed">
+    <div class="part-label">Part Five</div>
+    <h2>Deconfirmed</h2>
+    <p class="part-intro">Theories the story has since ruled out.</p>
+
+    <div class="theory deconfirmed">
+      <div class="num">DECONFIRMED BY THE STORY</div>
+      <h3>William is inside VANGUARD</h3>
+      <p>The group suspected William had moved his mind into VANGUARD, based on his obsession with "continuity," VANGUARD echoing his language about decay and signal, and Marcus calling F&#8209;01 a possible "body replacement." The story has ruled this out.</p>
+    </div>
+  </section>
+
+  <footer>END OF RECONSTRUCTION // MANY LOGS BETWEEN 028 AND 066, AND EVERYTHING AFTER 067, NOT YET RECOVERED</footer>
 </main>
 
 </body>
