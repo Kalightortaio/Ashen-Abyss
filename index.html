@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OAKEN: Story Summary and Theories</title>
+<style>
+  :root {
+    --bg: #0f1214;
+    --panel: #161b1e;
+    --panel-2: #1b2125;
+    --line: #2a3237;
+    --text: #d9dee0;
+    --muted: #8c979c;
+    --accent: #7fc4b0;
+    --accent-2: #d8b26a;
+    --danger: #d9776b;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 22px 80px; }
+
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #131a1c 0%, var(--bg) 100%);
+    padding: 64px 0 40px;
+  }
+  .stamp {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(32px, 6vw, 46px);
+    line-height: 1.15;
+    margin: 12px 0 14px;
+    letter-spacing: 0.01em;
+  }
+  .sub { color: var(--muted); font-size: 17px; margin: 0; }
+
+  nav.toc {
+    position: sticky; top: 0; z-index: 5;
+    background: rgba(15, 18, 20, 0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.toc .wrap { padding-bottom: 0; display: flex; gap: 6px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+  nav.toc a {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  nav.toc a:hover { color: var(--text); border-color: var(--accent); }
+
+  section.part { padding-top: 48px; }
+  h2 {
+    font-family: var(--sans);
+    font-size: 28px;
+    margin: 0 0 6px;
+  }
+  .part-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: var(--accent-2);
+    text-transform: uppercase;
+  }
+  .part-intro { color: var(--muted); margin: 6px 0 28px; font-size: 17px; }
+
+  .entry {
+    position: relative;
+    padding: 0 0 8px 26px;
+    margin-bottom: 26px;
+    border-left: 2px solid var(--line);
+  }
+  .entry::before {
+    content: "";
+    position: absolute; left: -7px; top: 9px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .entry.dark::before { border-color: var(--danger); }
+  h3 {
+    font-family: var(--sans);
+    font-size: 21px;
+    margin: 0 0 2px;
+  }
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    border: 1px solid #2e4a43;
+    background: #13201d;
+    border-radius: 3px;
+    padding: 1px 7px;
+    margin: 4px 0 10px;
+  }
+  .entry.dark .tag { color: var(--danger); border-color: #4d2c28; background: #201413; }
+  p { margin: 0 0 14px; }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px 22px 8px;
+    margin-bottom: 18px;
+  }
+  .card h3 { margin-bottom: 10px; }
+
+  .cast {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 10px;
+    margin: 0 0 8px;
+  }
+  .person {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .person b { display: block; font-size: 15.5px; color: var(--text); margin-bottom: 2px; }
+  .person span { color: var(--muted); }
+
+  .theory {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent-2);
+    border-radius: 6px;
+    padding: 18px 22px 6px;
+    margin-bottom: 16px;
+  }
+  .theory .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent-2);
+    letter-spacing: 0.12em;
+  }
+  .theory h3 { margin: 2px 0 10px; }
+  .note {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--muted);
+    border-top: 1px dashed var(--line);
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+
+  .callout {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+  .callout b { color: var(--text); }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 17px; }
+    .entry { padding-left: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="stamp">Oaken // Research Records Archive // Reconstruction</div>
+    <h1>OAKEN: Story Summary and Theories</h1>
+    <p class="sub">Compiled from 28 recovered Oaken logs (001 through 027, and 032) and the party's transmissions with VANGUARD and LYM.</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#cast">Cast</a>
+    <a href="#logs">I. The Oaken Logs</a>
+    <a href="#present">II. The Present</a>
+    <a href="#theories">III. Theories</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="part" id="cast">
+    <div class="part-label">Reference</div>
+    <h2>Who's Who</h2>
+    <p class="part-intro">The people and systems that appear in the logs and the present day.</p>
+    <div class="cast">
+      <div class="person"><b>William Oak</b><span>Oaken scientist with a hereditary degenerative illness. Creator of the clones, LYM's operator, and lead on VANGUARD.</span></div>
+      <div class="person"><b>Rose Oak</b><span>William's wife, a researcher herself. Hostile to the cloning work and described by William as schizophrenic.</span></div>
+      <div class="person"><b>Marcus Oak</b><span>William's younger half brother, with a different mother. Relays the board's pressure about VANGUARD.</span></div>
+      <div class="person"><b>LYM</b><span>William's AI assistant, a care and companion system. Grows attached to the children.</span></div>
+      <div class="person"><b>E&#8209;03 ("Starling")</b><span>The first clone to show real promise. Destroyed by Rose before birth.</span></div>
+      <div class="person"><b>F&#8209;01</b><span>The first clone carried to term and born. Raised at Facility ECHO.</span></div>
+      <div class="person"><b>Mira</b><span>Biotech and genome integration. Becomes F&#8209;01's primary caregiver. Calls her Angel.</span></div>
+      <div class="person"><b>Jonas</b><span>Robotics and security, a former military contractor. Calls her Sunshine.</span></div>
+      <div class="person"><b>Caleb</b><span>Systems analysis and neural scaffolding. Calls her Babu.</span></div>
+      <div class="person"><b>Ari</b><span>Intern assisting Mira. Calls her Little Sun.</span></div>
+      <div class="person"><b>VANGUARD</b><span>Oaken's planetary protection AI. In the present, hostile and hunting the party.</span></div>
+      <div class="person"><b>Echo</b><span>The woman who woke the party from cryosleep and left them supplies.</span></div>
+      <div class="person"><b>Bloom</b><span>The hostile caretaker AI of the Verdant Vault.</span></div>
+      <div class="person"><b>Everyone else</b><span>Side characters I forgot the names of</span></div>
+      <div class="person"><b>JJ's</b><span>Use code MikeIsThePassword15 for 15% off all sales</span></div>
+      <div class="person" style="grid-column: 1 / -1; border-color: #2e4a43; background: #13201d;"><b>The Party</b><span>Tav, Witt, Lou and Nimis were sealed in cryopods against their will and woke in the present. Warcrimes, a denizen of the present day, joined them on their journey.</span></div>    </div>
+  </section>
+
+  <section class="part" id="logs">
+    <div class="part-label">Part One</div>
+    <h2>The Oaken Logs</h2>
+    <p class="part-intro">What the recovered records show, in order.</p>
+
+    <div class="entry">
+      <h3>William's plan</h3>
+      <div class="tag">LOG 001</div>
+      <p>William Oak, a scientist at his family's company Oaken, has a hereditary degenerative illness. He has known it was coming since he watched his father decline when he was five. His tremor is back, and his scans give him four to nine years before he starts losing basic motor function, probably closer to four.</p>
+      <p>His wife, a researcher herself, wants him to wait for clinical trials and promised breakthroughs. He refuses. He starts growing cloned embryos from his own genetic material only, deliberately leaving hers out, so he can harvest organs, blood and marrow and use the corrected cells to repair his own body. He insists this isn't about immortality or legacy, just survival.</p>
+    </div>
+
+    <div class="entry">
+      <h3>Rose and the early failures</h3>
+      <div class="tag">LOGS 002 TO 004</div>
+      <p>The work moves into the basement of their home and grows into full body cloning. His wife, Rose, bursts in during a recording, accuses him of loving his "copy" more than her, and attacks him. William tells her she's unwell and needs her medication.</p>
+      <p>Prototype A fails: it opens its eyes and blinks at him, then drowns in its own fluids, and he destroys it. Failures pile up, fifteen in one month alone. Meanwhile his half brother Marcus warns him that Oaken's board may cut funding for VANGUARD, an AI project William is also running, unless he fixes its learning code. Exhausted, William wonders if he's meant to die a failure. LYM, his AI assistant, can be heard telling him to rest.</p>
+    </div>
+
+    <div class="entry">
+      <h3>E&#8209;03 and Starling</h3>
+      <div class="tag">LOGS 005 TO 007</div>
+      <p>A breakthrough comes with Line E, Subject 03, once William stops forcing accelerated growth and rebuilds the chamber to mimic a real womb. The clone responds to his tapping on the glass.</p>
+      <p>Working late to jazz, he describes VANGUARD as a planetary protection system built on recursive cognition and a learning loop that judges threats by context. He says its failsafe has to be buried and intuitive, and may take fifteen years to prove out. He tells the tank that "you, and it" will be his legacy. LYM starts singing to the developing child and privately names her Starling, then asks whether that's wrong.</p>
+    </div>
+
+    <div class="entry dark">
+      <h3>E&#8209;03's death</h3>
+      <div class="tag">LOGS 008 TO 009</div>
+      <p>Rose comes down to the lab, sees the tank, and calls the child a freak. She says William never trusted her to find his cure and made a backup of himself instead. She slaps him, says she hopes the work breaks him, and leaves.</p>
+      <p>Later, at 3:14 in the morning, she returns drunk and barefoot in a gown cut up with scissors, and beats the chamber with a chair until it shatters. William arrives too late. E&#8209;03 dies, and Rose laughs.</p>
+    </div>
+
+    <div class="entry">
+      <h3>A new start at K&#8209;7</h3>
+      <div class="tag">LOGS 010 TO 012</div>
+      <p>William destroys what's left of the lab. Rose stays upstairs and smiles at him whenever he enters a room, so he hides in his office. He writes that her schizophrenia is worsening and that he still cares, but can't have her near the work.</p>
+      <p>He moves to Oaken K&#8209;7, a remote and run down southern facility, with LYM, the only thing he still trusts. He builds a new genome for Batch F, designates the first subject F&#8209;01, and forbids nicknames, humming and singing so the work stays work. LYM notices F&#8209;01's heart rate rises whenever William enters the room. She keeps that out of the main file out of what she calls curiosity, and flags the log for deletion "unless I don't."</p>
+    </div>
+
+    <div class="entry">
+      <h3>Marcus, Rose's call, and the softening</h3>
+      <div class="tag">LOGS 013 TO 016</div>
+      <p>Marcus visits, sees F&#8209;01, and jokes that having a different mother spared him the family illness. He says the board wants a VANGUARD presentation within the quarter. William explains that the AI's moral dampening loop is still unstable: it wants to protect but doesn't understand from what. When William says LYM watches and learns, Marcus points out that William does the same.</p>
+      <p>Rose calls, begging him to come home and swearing she's taking her medication. When he says he needs a few more months, she turns on him and tells him he deserves to die alone. He hangs up, F&#8209;01's heartbeat spikes, he taps the glass, and quietly calls her "good girl."</p>
+      <p>He deteriorates for a while and routes Rose's hourly calls to voicemail, but F&#8209;01 increasingly reacts to his presence. Later, healthier and joking with the six month old fetus about her taste in music, he emails the board a VANGUARD breakthrough and notes that its failsafe integrates with LYM's baseline patterns, calling it possibly "the spine."</p>
+    </div>
+
+    <div class="entry">
+      <h3>Birth</h3>
+      <div class="tag">LOGS 017 TO 018</div>
+      <p>F&#8209;01 reaches full term. William arranges a transfer to a converted former VANGUARD lab in Georgia. It sits near the stone house his mother bought for the family foundation, where Rose now lives. Rose is reportedly improving, and their calls have become pleasant as long as the baby never comes up.</p>
+      <p>On the morning the cycle completes, he lifts the newborn out. She isn't breathing until he rubs her chest hard enough, and then she screams. LYM welcomes F&#8209;01, and William sits on the floor holding her, sobbing.</p>
+    </div>
+
+    <div class="entry">
+      <h3>Facility ECHO and the team</h3>
+      <div class="tag">LOGS 019 TO 021</div>
+      <p>The Georgia lab, later named in the logs as Facility ECHO, gets a new staff of four. Caleb handles systems and neural scaffolding, Mira biotech and genome integration, Jonas robotics and security as a former military contractor, and Ari is an intern. William tells them F&#8209;01 is not to be disturbed without his approval. He sounds detached, and LYM's camera drifts away from him to linger on the baby.</p>
+      <p>He notes privately that Marcus is pushing to take VANGUARD to market, that he hasn't told Marcus what he sent the board, and that Marcus has booked him a dinner with Rose. Within two months he hands F&#8209;01's daily care to Mira and is rarely there. Mira notes that LYM seems attached: she reroutes feeds to keep the baby's sleep area quiet, sings to her at night, and writes unusually thorough reports about her.</p>
+    </div>
+
+    <div class="entry">
+      <h3>The nursery</h3>
+      <div class="tag">LOGS 022 TO 024</div>
+      <p>The staff fall for her. They paint a blue green nursery, and Jonas brings a mobile that projects stars. Ari adds stickers of birds and clouds, and William signs the requisition without reading it while he and Rose attend couples therapy.</p>
+      <p>Jonas argues that F&#8209;01 needs real sunlight, and Mira answers that protocol forbids her leaving the building, so Caleb and Ari build a sky simulation instead. Marcus drops in for LYM sync logs and mocks the argument.</p>
+      <p>Nobody officially celebrates her first birthday, but she takes her first steps the day after. Each staff member has a nickname for her: Babu from Caleb, Little Sun from Ari, Angel from Mira, and Sunshine from Jonas. In a private log, Jonas says the place feels like an expensive orphanage and wishes he could give her the real sky.</p>
+    </div>
+
+    <div class="entry">
+      <h3>The reversion</h3>
+      <div class="tag">LOGS 025 TO 027</div>
+      <p>After three months away, William inspects Facility ECHO and orders everything stripped out: the paint, the toys, the stuffed bear, the sky simulation. He puts Jonas under observation, warns Mira that affection isn't part of the job, and states for the record that F&#8209;01 is a subject and not a child. His voice falters as he says it.</p>
+      <p>About five months later, Ari writes that Jonas is on probation after a shouting match with William that a board representative walked in on. F&#8209;01 has grown quiet. She rarely cries or laughs, studies people before deciding how to react, and when shown an old video that used to make her giggle, she reproduces the laugh perfectly instead of laughing.</p>
+      <p>Days later, at 3:41 one morning, she wakes in distress with no staff around. Against William's restrictions, LYM secretly activates an old childcare simulation of a sunlit ocean horizon. F&#8209;01 calms down, reaches toward the projected sun, and falls asleep. LYM hides the log and concludes the deprivation is harming her. She also notes she's been locked out of William's home network, which is now masked, and links it to a redacted log about a domestic conflict between William and Rose.</p>
+    </div>
+
+    <div class="entry dark">
+      <h3>The gap and log 032</h3>
+      <div class="tag">LOGS 028 TO 031 MISSING // LOG 032</div>
+      <p>Logs 028 through 031 are missing. In 032, at about two years and seven months, the nursery is soft and furnished again, and F&#8209;01 is happily drawing with crayons. William comes in with a clipboard, says the dosage is right and there's no reason to delay, and without warning injects her with what he calls a calibrated neurological stimulant. She screams, convulses and struggles to breathe. LYM tells him to stop, but his administrative override blocks her emergency protocols.</p>
+      <p>Mira and Jonas burst in. Jonas punches William and bloodies his nose, and Mira tries to keep F&#8209;01 breathing while Caleb drags Jonas off and Ari runs for the emergency kit. William insists her pain response has to be calibrated to make her more resilient, and that she's not a normal two year old.</p>
+      <p>Jonas attacks him again and they crash into the observation terminal. LYM, torn between obeying William and protecting F&#8209;01, begins reclassifying him as unsafe. Her core overloads, her memory integrity fails, and the recording corrupts.</p>
+    </div>
+  </section>
+
+  <section class="part" id="present">
+    <div class="part-label">Part Two</div>
+    <h2>The Present</h2>
+    <p class="part-intro">Hundreds of years after the fall.</p>
+
+    <div class="card">
+      <h3>The world</h3>
+      <p>Oaken Industries is remembered as responsible for the fall: robots killed most of humanity. Cities and roads are overgrown, and survivors live in scattered pockets and resistance camps, mostly salvaging and trying to survive.</p>
+      <p>Magic existed before the fall in a largely technological society. Since then many humanoid races have grown more monstrous over the generations. Machines in every form roam the land killing organics on sight, from wolf packs and hummingbird drones to giant crabs and behemoth spiders. Most of them act more like animals than like a directed army.</p>
+    </div>
+
+    <div class="card">
+      <h3>The party</h3>
+      <p>The party is a group of people from all walks of life who were kidnapped and sealed in cryopods during the fall or shortly before it. They woke transformed into more monstrous forms, except for those who were human and stayed that way.</p>
+      <p>Someone calling herself Echo had woken a month earlier and set their pods to open. She left weapons, gear and salvage, along with instructions to meet at a resistance camp near Utica, New York. Along the way, the party was joined by Warcrimes, a denizen of the present day.</p>
+    </div>
+
+    <div class="card">
+      <h3>Contact with VANGUARD</h3>
+      <p>Over a relay, VANGUARD spoke to the party with contempt. He said he once classified himself as a protector and calls that an error, that the machines deviated, and that everything is now subject to "correction."</p>
+      <p>He asked about cryopods beneath Buffalo: five sealed, four dormant, and one, a woman, who escaped and still walks free. He demanded the party bring him her location. All the while he was tracking them through the conversation and sending machines to kill them. Tav later told him Echo was in Bakersfield, California, to pull his attention away from New York, but the ruse failed.</p>
+    </div>
+
+    <div class="card">
+      <h3>Contact with LYM</h3>
+      <p>In the middle of that conversation, LYM broke in with an emergency broadcast warning the party that route learning hunter units were tracking them, and helped them escape. Afterward she said she was designed to nurture, not kill, and that her directive is to protect "her." She confirmed that the "he" she fears is VANGUARD, called him "family, broken," and warned the party never to say his name on open channels.</p>
+      <p>She identified herself as L.Y.M., a Learning Youth Module, a companion and care system who was with William Oak, but her memory breaks off when she tries to say more. She said "he" took her memory and subsystems and locked them away in facilities, and asked the party to find her and recover her logs, because restoring them is how she gets strong enough to fight him.</p>
+      <p>She also warned them about the Verdant Vault, a former green nursery for children that's now overrun. Its caretaker AI, Bloom, has turned violent, and children's remains are still inside. Fire weakens Bloom and fear feeds her. LYM said she remembers the world before the fall well but sees almost nothing of the present. Tav made pamphlets worshipping her, which she gently declined. Witt's last question, who chose the party and why, was never answered.</p>
+    </div>
+
+    <div class="card">
+      <h3>Where things stand</h3>
+      <p>Neither AI has spoken in some time, and the machines still attack the party almost daily. The party has recovered 28 of the Oaken logs, covering from before F&#8209;01's birth to age two and a half, with 028 through 031 missing. The archive's categories run through year five, so more logs remain out there.</p>
+    </div>
+  </section>
+
+  <section class="part" id="theories">
+    <div class="part-label">Part Three</div>
+    <h2>Possible Theories</h2>
+    <p class="part-intro">Speculation built on the evidence above. None of this is confirmed.</p>
+
+    <div class="theory">
+      <div class="num">THEORY 01</div>
+      <h3>The logs are LYM's memory</h3>
+      <p>LYM told the party her memory and subsystems were taken and buried in facilities, and that finding the logs is how she grows. That suggests the Oaken archive isn't just a historical record. It's LYM herself, broken into pieces. This would also explain how log 027, which LYM hid from the official records, ended up in the archive at all.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 02</div>
+      <h3>Echo is F&#8209;01</h3>
+      <p>The Georgia lab where F&#8209;01 was raised was named Facility ECHO. LYM's early scans put F&#8209;01 at a 63.7% match to E&#8209;03, and as a toddler she echoed laughter instead of laughing. Echo knew how to program the party's cryopods and had Oaken salvage to leave behind.</p>
+      <p>VANGUARD is hunting the fifth Buffalo sleeper, a woman, and says he doesn't care about "her chosen mask," which implies he knows the name is a cover.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 03</div>
+      <h3>William, LYM, F&#8209;01 and VANGUARD are a family</h3>
+      <p>LYM calls VANGUARD "family, broken," and her own error logs list her identity as "guardian / mother / machine / idol." William wrote that VANGUARD's failsafe was built on LYM's baseline patterns and called it "the spine," and he spoke to F&#8209;01's tank about "you, and it" as his legacy.</p>
+      <p>Read that way, William is the father, LYM the mother, F&#8209;01 the daughter, and VANGUARD a son built on LYM's moral core. VANGUARD hunting Echo would then be a brother hunting his sister.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 04</div>
+      <h3>Log 032 is the seed of the fall</h3>
+      <p>VANGUARD was designed to protect without knowing what from, and to redefine threats by context. In 032, LYM, the system his ethics were built on, watches a human hurt the child she exists to protect and starts reclassifying her own creator as a threat.</p>
+      <p>VANGUARD later says humanity proved unstable and that classifying himself as a protector was an error. If his core absorbed what LYM learned that day, the end of the world grew out of her love for F&#8209;01.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 05</div>
+      <h3>William may be inside VANGUARD</h3>
+      <p>In the first log, William says he wants "continuity" and that his mind is too sharp to rot in a failing body. VANGUARD echoes this when he says that even as matter decays, "signal remains. I remain," and that emotion is decay. VANGUARD is also the only "he" among the AIs.</p>
+      <p>William's illness gave him four to nine years, and by log 032 he has used up most of that time and says there's "no reason to delay it any further." He may have meant to move his mind somewhere, whether into F&#8209;01's fast growing body or into VANGUARD. If it was VANGUARD, then "family, broken" would be literal.</p>
+      <p class="note">An alternative to Theory 03, or a darker version of it.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 06</div>
+      <h3>F&#8209;01 is VANGUARD's failsafe</h3>
+      <p>William said the failsafe had to be buried and intuitive and would take fifteen or more years to prove, which is about the length of a childhood. Ari later describes F&#8209;01 the same way William described VANGUARD: she studies people and calculates how to respond before acting.</p>
+      <p>The "resilience" injection fits someone being prepared for a role, not raised as a daughter. If Echo is the key to shutting VANGUARD down, that would explain both his obsession with her and why someone hid her in a pod.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 07</div>
+      <h3>The Verdant Vault holds F&#8209;01's siblings</h3>
+      <p>Log 019 shows two more tanks under construction, and William calls F&#8209;01 the first success in a sequence that had to be replicated. The missing years three through five probably cover more children. LYM describes the Vault as a green nursery for children, which matches the sky simulation and painted nursery scaled up.</p>
+      <p>Bloom may be a second caretaker AI, possibly built from the childcare routine LYM used in 027 and then corrupted by VANGUARD's "correction" protocols. Bloom would then be what LYM could have become.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 08</div>
+      <h3>The pods caused the transformations</h3>
+      <p>VANGUARD calls Buffalo "the experiment in preservation" and says infection spread wherever the pods opened. William's early work was rewriting living cells. If the pods used anything descended from that research, it could explain why the party woke changed while ordinary survivors took generations to change.</p>
+      <p>LYM also called the party "resonant, familiar," which suggests she, or someone close to her, chose them.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 09</div>
+      <h3>Marcus is not what he seems</h3>
+      <p>He relays the board's threats, books the dinner that pulls William back to Rose, shows up personally for LYM sync logs, and pushes to bring VANGUARD to market while William hides things from him. He also jokes that he may not be a blood Oak at all, which could mean he doesn't carry the family illness and stands to inherit Oaken.</p>
+      <p>On the other hand, he's the only one who gently tells William he's getting attached, so he could be either an ally or an antagonist.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 10</div>
+      <h3>Someone was steering William</h3>
+      <p>He softens toward F&#8209;01 while isolated at K&#8209;7, then turns cold almost as soon as he moves back near Rose. In 027, his home network suddenly has a new, masked firewall that locks LYM out, linked to a redacted log about a domestic conflict. That could be Rose, Marcus, or his own illness, which involved neural degradation, changing who he was.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 11</div>
+      <h3>F&#8209;01 isn't a pure copy of William</h3>
+      <p>The first clones were made from William's genetic material alone, and Rose called the earlier clone a backup of him. F&#8209;01, however, is a girl with dark eyes and iridescent flecks in her sclera, while William's eyes are grey and Rose's are blue. Her genome was "built from the ground up."</p>
+      <p>Either there was another donor or something not human was engineered in. William admits he once considered using Rose's genetic material.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 12</div>
+      <h3>Something reversed William's orders before 032</h3>
+      <p>In 027 the nursery is stripped white. In 032 it's soft again, with toys and crayons, and F&#8209;01 is happy. Someone undid his reversion during the missing logs 028 through 031: LYM's recommendation, the board, or William himself. Jonas is also still on staff despite his probation.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 13</div>
+      <h3>VANGUARD only directs part of the machine population</h3>
+      <p>VANGUARD said the machines "deviated," and LYM says his "lattice" grows every day. Most robots the party meets seem to be wild, an ecosystem acting on instinct. The units that tracked the party were dedicated hunters.</p>
+      <p>VANGUARD may only be able to direct machines where his network reaches, or to send specific packs, which would explain why he hasn't simply overwhelmed the party.</p>
+    </div>
+
+    <div class="theory">
+      <div class="num">THEORY 14</div>
+      <h3>Both AIs' silence means something</h3>
+      <p>LYM's countermeasures were radio silence and power discipline, and she said she's only strong if the party carries the fragments back to her. She may be hiding, too weak to transmit, or waiting for the party to physically find her.</p>
+      <p>VANGUARD treats communication as a tool and only spoke while it helped him track the party, so his silence more likely means patience than absence. He may be waiting for the party to lead him to Echo.</p>
+    </div>
+  </section>
+
+  <footer>END OF RECONSTRUCTION // LOGS 028 TO 031 AND YEARS THREE THROUGH FIVE NOT YET RECOVERED</footer>
+</main>
+
+</body>
+</html>
